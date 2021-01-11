@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./.docker/data01:/usr/share/elasticsearch/data
+    ports:
+      - '9200:9200'
+    networks:
+      - elastic
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://elasticsearch:9200"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.1
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - '5601:5601'
+    networks:
+      - elastic
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+networks:
+  elastic:
+    driver: bridge
