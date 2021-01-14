@@ -5,9 +5,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
     <PackageReference Include="log4net.ElasticSearch" Version="2.5.0" />
   </ItemGroup>
-
 
   <ItemGroup>
     <None Update="log4net.config">
