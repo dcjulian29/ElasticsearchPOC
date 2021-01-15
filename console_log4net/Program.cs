@@ -9,11 +9,12 @@ namespace console_log4net
 {
     static internal class Program
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Shut Up")]
         private static readonly ILog _log = LogManager.GetLogger(typeof(Program));
 
         private static void Main(string[] args)
         {
-            XmlDocument log4netConfig = new XmlDocument();
+            var log4netConfig = new XmlDocument();
             log4netConfig.Load(File.OpenRead("log4net.config"));
             var repo = log4net.LogManager.CreateRepository(Assembly.GetEntryAssembly(),
                        typeof(log4net.Repository.Hierarchy.Hierarchy));
@@ -25,7 +26,7 @@ namespace console_log4net
 
             _log.Error("kaboom!", new ApplicationException("The application exploded"));
 
-            Exception newException = new Exception("There was a system error");
+            var newException = new Exception("There was a system error");
             newException.Data.Add("CustomProperty", "CustomPropertyValue");
             newException.Data.Add("SystemUserID", "User43");
 
@@ -45,6 +46,11 @@ namespace console_log4net
             Console.WriteLine("Done.");
 
             _log.Debug("Done");
+
+            for (var i = 0; i < 100; i++)
+            {
+                _log.InfoFormat("This message sent at {0}", DateTime.Now);
+            }
 
             // Give Background threads time to send log4net logs
             var time = 5;
