@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "console_serilog", "console_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mvc_log4net", "mvc_log4net\mvc_log4net.csproj", "{F1D8E847-AF2D-4AEE-8B02-9F159BD455ED}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api_log4net", "api_log4net\api_log4net.csproj", "{5B4BF5B9-9BF8-498F-AE1C-B12C5CA125C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F1D8E847-AF2D-4AEE-8B02-9F159BD455ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1D8E847-AF2D-4AEE-8B02-9F159BD455ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1D8E847-AF2D-4AEE-8B02-9F159BD455ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4BF5B9-9BF8-498F-AE1C-B12C5CA125C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4BF5B9-9BF8-498F-AE1C-B12C5CA125C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4BF5B9-9BF8-498F-AE1C-B12C5CA125C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4BF5B9-9BF8-498F-AE1C-B12C5CA125C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
