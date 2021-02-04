@@ -1,16 +1,24 @@
 using System;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Formatting.Elasticsearch;
 using Serilog.Sinks.Elasticsearch;
 
 namespace console_serilog
 {
-    internal class Program
+    internal static class Program
     {
         private static ElasticsearchSinkOptions ConfigureElasticSink()
         {
-            return new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile(
+                    $"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
+                    optional: true)
+                .Build();
+
+            return new ElasticsearchSinkOptions(new Uri(configuration["ElasticConfiguration:Uri"]))
             {
                 AutoRegisterTemplate = true,
                 IndexFormat =
